@@ -3,8 +3,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- <script type="text/javascript">
+        function createdProjects(){
+    document.getElementById('created-projects').innerHTML = document.getElementById('project-name').value
+}
+    </script> -->
 </head>
 <body>
-    <div id="content"></div>
+    <div id="content">
+        <div id="project-section">
+            <h2>Projects</h2>
+            <form action="">
+                <input type="text" id="project-name" name="project-name"/>
+                <input type="button" id="create-project" name="create-project" value="add project" >
+            </form>
+            <div id="created-projects"></div>
+        </div>
+        <div id="todo-section"></div>
+    </div>
 </body>
 </html>

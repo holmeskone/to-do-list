@@ -1,4 +1,9 @@
-import createdProjects from "./projects-list";
+import {setUpProjectCreation} from "./project-creation";
+import { deleteProjectCreation } from "./delete-project";
 
-const button = document.getElementById('create-project');
-button.addEventListener("click", createdProjects);
+// Initialize the application
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('App initialized');
+    setUpProjectCreation(); // Delegate setup for the "Create Project" button
+});
+

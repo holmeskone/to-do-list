@@ -10,13 +10,15 @@
     </script> -->
 </head>
 <body>
-    <div id="content">
-        <div id="project-section">
+    <div id="content"> <!-- Overall content section -->
+        <div id="project-section"> <!-- Content section for the projects to be displayed-->
             <h2>Projects</h2>
-            <form action="">
-                <input type="text" id="project-name" name="project-name"/>
-                <input type="button" id="create-project" name="create-project" value="add project" >
-            </form>
+            <div id="add-project">
+                <form action="">
+                    <input type="text" id="input-project-name" name="project-name"/> <!-- Insert project name -->
+                    <input type="button" id="create-project-button" name="create-project" value="add project" > <!-- Insert project name -->
+                </form>
+            </div>
             <div id="created-projects"></div>
         </div>
         <div id="todo-section"></div>

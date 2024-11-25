@@ -6,5 +6,6 @@ export class Project{
 
     getDetails(){
         return `Project: ${this.name}, Created At: ${this.createdAt}`
-    }
+    } 
+    
 }

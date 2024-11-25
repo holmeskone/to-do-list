@@ -1,4 +1,4 @@
-import {delegateProjectCreation} from "./project";
+import {delegateProjectCreation} from "./manage-projects";
 
 
 // Initialize the application

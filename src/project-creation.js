@@ -1,14 +1,6 @@
 import {Project} from "./project.js"
-import { deleteProject } from "./delete-project";
 
-export function setUpProjectCreation(){
-    const createProjectButton = document.getElementById('create-project-button');
-    if(createProjectButton){
-        createProjectButton.addEventListener('click', createProject);
-    }
-} 
-
-function createProject(){
+export function createProject(){
     const projectBar = document.getElementById('created-projects');
     const projectSection = document.createElement('div');
     projectSection.id = 'project-1'

@@ -1,4 +1,4 @@
-import {delegateProjectCreation} from "./manage-projects";
+import {delegateProjectOperations} from "./project/manage-project";
 
 
 // Initialize the application
@@ -9,5 +9,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Call when there's a click on the project section
 document.addEventListener('click', () => {
-    delegateProjectCreation(); // Delegate to either create or delete project
+    delegateProjectOperations(); // Delegate to either create or delete project
 });

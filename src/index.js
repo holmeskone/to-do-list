@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Initialize the application
+// Call when there's a click on the project section
 document.addEventListener('click', () => {
-    delegateProjectCreation(); // Delegate setup for the "Create Project" button
+    delegateProjectCreation(); // Delegate to either create or delete project
 });

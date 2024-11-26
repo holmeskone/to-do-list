@@ -1,12 +1,16 @@
 export class Todo{
-    constructor(title, description){
+    constructor(title, date, description, priority, notes){
         this.title = title,
+        this.date = date,
         this.description = description,
+        this.priority = priority,
+        this.notes = notes,
         this.createdAt = new Date();
     }
 
     getDetails(){
-        return `Project: ${this.title}, Description: ${this.description}, Created At: ${this.createdAt}`
+        console.log('Class created');
+        return `To Do: ${this.title}, Date: ${this.date} Description: ${this.description}, Priority: ${this.priority}, Notes: ${this.notes}, Created At: ${this.createdAt}`
     } 
     
 }

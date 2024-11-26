@@ -24,3 +24,22 @@ export function createProject(){
 
 // Export the current project
 export { currentProject };
+
+
+export function createDefaultProject(){
+    const projectBar = document.getElementById('created-projects');
+    const projectSection = document.createElement('div');
+    const projectNameDisplay = document.createElement('h3');
+    const deleteProject = document.createElement('button');
+    const projectName = 'Default Project'
+    // Create a new project
+    currentProject = new Project(projectName);
+    projectNameDisplay.id = `${projectName}`
+    deleteProject.id = 'delete';
+    deleteProject.textContent = '❌';
+    projectSection.id = `${projectName}`
+    projectNameDisplay.innerHTML = projectName;
+    console.log('New project created:', currentProject);
+    projectSection.append(projectNameDisplay,deleteProject);
+    projectBar.appendChild(projectSection);
+}

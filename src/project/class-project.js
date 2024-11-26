@@ -1,11 +1,11 @@
 export class Project{
     constructor(name){
         this.name = name,
-        this.createdAt = new Date();
+        this.todos = []
     }
 
     getDetails(){
-        return `Project: ${this.name}, Created At: ${this.createdAt}`
+        return `Project: ${this.name}, Todos: ${this.todos}`
     } 
-    
+
 }

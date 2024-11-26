@@ -1,10 +1,12 @@
 import {delegateProjectOperations} from "./project/manage-project";
 import { managetodo } from "./todo/manage-to-dos";
+import { defaultProjectOperation } from "./project/manage-project";
 
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
     console.log('App initialized');
+    defaultProjectOperation();
 });
 
 

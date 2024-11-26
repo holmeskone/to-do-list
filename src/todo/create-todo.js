@@ -1,6 +1,6 @@
 import { Todo } from "./class-todo";
 
-export function createToDo(titleToDo,descriptionToDo){
-    console.log('This is a new To Do')
-    const newTodo =  new Todo(titleToDo,descriptionToDo);
+export function createToDo(title, date, description, priority, notes){
+    const newToDo = new Todo(title, date, description, priority, notes);
+    console.log('New project created:', newToDo);
 }

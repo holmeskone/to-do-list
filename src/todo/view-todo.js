@@ -1,5 +1,3 @@
-// import { Todo } from "./class-todo";
-
 export function displayTodo(todo){
     const displayBlock = document.getElementById('todo-block');
     const todoListProject = document.createElement('div');
@@ -18,3 +16,33 @@ export function displayTodo(todo){
 
 }
 
+export function displayTab(section) {
+    // Declare all variables
+    let i, tabContent, tabButton; 
+
+    // Get all elements with class="tab-content" and hide them
+    tabContent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
+  }
+
+    // Get all elements with class="tab-button" and remove the class "active"
+    tabButton = document.getElementsByClassName("tab-button");
+    for (i = 0; i < tabButton.length; i++) {
+        tabButton[i].className = tabButton[i].className.replace(" active", "");
+    }
+
+    const createTodoSectionButton = document.getElementById('create-todo-section-button');
+    const viewTodoSectionButton = document.getElementById('view-todo-section-button');
+    const createTodoSection = document.getElementById('create-todo-section');
+    const viewTodoSection = document.getElementById('view-todo-section');
+    const displaySectionID = section.replace('-button','');
+    const displaySection = document.getElementById(displaySectionID);
+    
+
+    // if (section = createTodoSectionButton.id){
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(displaySectionID).style.display = "block";
+    displaySection.className += " active";
+
+}

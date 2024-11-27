@@ -6,7 +6,6 @@
 </head>
 <body>
     <div id="content"> <!-- Overall content section -->
-        <div id="todo-body"></div>
         <div id="project-section"> <!-- Content section for the projects to be displayed-->
             <h2>Projects</h2>
             <div id="add-project">
@@ -18,7 +17,11 @@
             <div id="created-projects"></div>
         </div>
         <div id="todo-section">
-            <div id="create-todo-section">
+            <div class="tab-banner" id="todo-tab">
+                <button class="tab-button" id="create-todo-section-button" data="create-todo-section">Create To Do</button>
+                <button class="tab-button" id="view-todo-section-button" data="view-todo-section">To Do List</button>
+            </div>              
+            <div class="tab-content" id="create-todo-section" >
                 <form action="" id="todo" class="todo-form">
                     <div>
                         <h2>Create a To Do</h2>
@@ -51,7 +54,7 @@
                     </div>
                 </form>
             </div>
-            <div id="view-todo-section">
+            <div class="tab-content" id="view-todo-section">
                 <div id="todo-block">
                     <h3>To do List</h3>
                 </div>

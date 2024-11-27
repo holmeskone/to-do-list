@@ -1,5 +1,61 @@
 body{
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    background-color: antiquewhite;
 }
+
+/* Layout for Content section */
+
+#content{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+
+/* Styling for Project Section */
+
+#project-section{
+    background-color: #283618;
+    color: #fefae0;
+}
+
+/* Styling for Todo Section */
+
+#todo-section{
+    background-color: #fefae0;
+    color: #283618;
+}
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tab-content {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }

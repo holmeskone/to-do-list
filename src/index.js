@@ -17,7 +17,7 @@ projectSection.addEventListener('click', () => {
 });
 
 // Call when there's a click on the to do section
-const toDoSection = document.getElementById('create-todo');
+const toDoSection = document.getElementById('create-todo-button');
 toDoSection.addEventListener('click', () => {
     managetodo();
 });

@@ -32,10 +32,6 @@ export function displayTab(section) {
         tabButton[i].className = tabButton[i].className.replace(" active", "");
     }
 
-    const createTodoSectionButton = document.getElementById('create-todo-section-button');
-    const viewTodoSectionButton = document.getElementById('view-todo-section-button');
-    const createTodoSection = document.getElementById('create-todo-section');
-    const viewTodoSection = document.getElementById('view-todo-section');
     const displaySectionID = section.replace('-button','');
     const displaySection = document.getElementById(displaySectionID);
     

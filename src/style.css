@@ -11,11 +11,17 @@ body{
 }
 
 
-/* Styling for Project Section */
+/* PROJECT SECTION */
 
 #project-section{
     background-color: #283618;
     color: #fefae0;
+}
+
+/* Styling selecting project */
+
+#project-section [class*=" selected"]{
+  background-color: #bc6c25;
 }
 
 /* Styling for Todo Section */

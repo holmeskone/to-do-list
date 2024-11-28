@@ -1,5 +1,6 @@
 export function displayTodo(todo){
     const displayBlock = document.getElementById('todo-block');
+    displayBlock.className = 'todo';
     const todoListProject = document.createElement('div');
     const todoTitle = document.createElement('p');
     const todoDate = document.createElement('p');

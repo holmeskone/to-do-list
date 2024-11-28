@@ -1,4 +1,5 @@
 import {Project} from "./class-project.js"
+import { selectProject } from "./select-project.js";
 
 let currentProject = null;
 
@@ -12,17 +13,21 @@ export function createProject(){
     // Create a new project
     currentProject = new Project(projectName);
     projectNameDisplay.id = `${projectName}`
-    deleteProject.id = 'delete';
+    projectNameDisplay.className = 'project';
     deleteProject.textContent = '❌';
-    projectSection.id = `${projectName}`
+    deleteProject.id = `delete-${projectName}`;
+    deleteProject.className = 'delete-project';
+    projectSection.id = `${projectName}-section`;
+    projectSection.className = 'project';
     projectNameDisplay.innerHTML = projectName;
     console.log('New project created:', currentProject);
     projectSection.append(projectNameDisplay,deleteProject);
     projectBar.appendChild(projectSection);
     input.value = "";
+    selectProject(projectSection.firstElementChild,projectSection.id); // Make the latest project as the currently selected, the variables are to align with the selected function.
 }
 
-// Export the current project
+// Export the current SELECTED project to the to do creation file. 
 export { currentProject };
 
 
@@ -35,11 +40,15 @@ export function createDefaultProject(){
     // Create a new project
     currentProject = new Project(projectName);
     projectNameDisplay.id = `${projectName}`
-    deleteProject.id = 'delete';
+    projectNameDisplay.className = `${projectName}-title`
+    deleteProject.id = `${projectName}-delete`;
+    deleteProject.className = 'delete-project';
     deleteProject.textContent = '❌';
-    projectSection.id = `${projectName}`
+    projectSection.id = `${projectName}-section`;
+    projectSection.className = 'project';
     projectNameDisplay.innerHTML = projectName;
     console.log('New project created:', currentProject);
     projectSection.append(projectNameDisplay,deleteProject);
     projectBar.appendChild(projectSection);
+    selectProject(projectSection.firstElementChild,projectSection.id); //Make default project as selected one. 
 }

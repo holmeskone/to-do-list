@@ -1,14 +1,26 @@
 import { Todo } from "./class-todo";
-import { currentProject } from "../project/create-project";
+import { Project } from "../project/class-project";
 import { displayTodo } from "./view-todo";
+import { selectProjectName } from "../project/select-project";
+import { allProjects } from "../project/create-project";
 
+// function getProjectByName(selectProjectName) {
+//     if (allProjects.has(selectProjectName)) {
+//         return allProjects.get(selectProjectName);
+//     }
+//     console.error(`Project with name "${selectProjectName}" not found.`);
+//     return null;
+// }
 
 export function createToDo(title, date, description, priority, notes, project){
+    console.log(selectProjectName)
     const newTodo = new Todo(title, date, description, priority, notes, project); // It creates a new instance of the class To Do
-    currentProject.todos.push(newTodo); // currentProject is the class of Object Project, here we get it's property to do's and push our recently made todo instance into it the project. 
-    console.log('A new todo was created for', currentProject.name, '. The todo is:', newTodo);
-    console.log('The updated overview of the project is', currentProject);
-    displayTodo(newTodo);
+    const projectName = allProjects.get(selectProjectName);
+    console.log(projectName);
+    projectName.addTodo(newTodo); // currentProject is the class of Object Project, here we get it's property to do's and push our recently made todo instance into it the project. 
+    // console.log('A new todo was created for', Project.name, '. The todo is:', project.getDetails());
+    console.log(projectName.getDetails());
+    displayTodo(projectName);
 }
 
 

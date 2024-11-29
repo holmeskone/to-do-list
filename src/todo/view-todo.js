@@ -7,11 +7,11 @@ export function displayTodo(todo){
     const todoDescription = document.createElement('p');
     const todoPriority = document.createElement('p');
     const todoNotes = document.createElement('p');
-    todoTitle.textContent = todo.title;
-    todoDate.textContent = `Due date: ${todo.date}`;
-    todoDescription.textContent = todo.description;
-    todoPriority.textContent = todo.priority;
-    todoNotes.textContent = todo.notes;
+    todoTitle.textContent = todo.todos[0].title;
+    todoDate.textContent = `Due date: ${todo.todos[0].date}`;
+    todoDescription.textContent = todo.todos[0].description;
+    todoPriority.textContent = todo.todos[0].priority;
+    todoNotes.textContent = todo.todos[0].notes;
     todoListProject.append(todoTitle, todoDate, todoDescription, todoPriority, todoNotes);
     displayBlock.append(todoListProject);
 

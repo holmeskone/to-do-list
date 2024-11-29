@@ -1,6 +1,9 @@
+import { allProjects } from "./create-project";
+
+let selectProjectName = null; 
 export function selectProject(event, projectName) {
     // Declare all variables
-    var i, project, todo;
+    var i, project, todo, v;
   
     // Get all elements with class="todo" and hide them
     todo = document.getElementsByClassName("todo");
@@ -19,7 +22,9 @@ export function selectProject(event, projectName) {
     // Show the selected project and to do list, and add an "active" class to the button that opened the tab
     document.getElementById(projectName).style.display = "block";
     event.parentElement.className += " selected";
+    selectProjectName = event.innerHTML;
+    console.log('Selected Project: ', selectProjectName);
+    console.log('Selected Project: ', allProjects.get(event.innerHTML));
   }
 
-
-  //Need to add selected and remove selected to the others. 
+  export {selectProjectName} ;

@@ -4,13 +4,7 @@ import { displayTodo } from "./view-todo";
 import { selectProjectName } from "../project/select-project";
 import { allProjects } from "../project/create-project";
 
-// function getProjectByName(selectProjectName) {
-//     if (allProjects.has(selectProjectName)) {
-//         return allProjects.get(selectProjectName);
-//     }
-//     console.error(`Project with name "${selectProjectName}" not found.`);
-//     return null;
-// }
+
 
 export function createToDo(title, date, description, priority, notes, project){
     console.log(selectProjectName)
@@ -19,7 +13,6 @@ export function createToDo(title, date, description, priority, notes, project){
     console.log(projectName);
     projectName.addTodo(newTodo); // currentProject is the class of Object Project, here we get it's property to do's and push our recently made todo instance into it the project. 
     // console.log('A new todo was created for', Project.name, '. The todo is:', project.getDetails());
-    console.log(projectName.getDetails());
     displayTodo(projectName);
 }
 

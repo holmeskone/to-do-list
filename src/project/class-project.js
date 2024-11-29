@@ -5,7 +5,11 @@ export class Project{
     }
 
     getDetails(){
-        return `Project: ${this.name}, Todos: ${this.todos}`
-    } 
+        return `Project: ${this.name}, Todos: ${this.todos[0].title}`;
+    }
+
+    addTodo(todo) {
+        this.todos.push(todo); // Example method to add a todo
+    }
 
 }

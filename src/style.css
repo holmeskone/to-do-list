@@ -64,10 +64,35 @@ body{
     background-color: #fff;
   }
   
+
+
   /* Style the tab content */
   .tab-content {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #a2a2a2;
-    border-top: none;
+  }
+
+  /* TODO LIST */
+
+  #todo-block h3{
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  #todo-block .todo{
+    background-color: white;
+    padding: 1rem;
+    
+  }
+
+
+  .tab-content #priority-divider{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+  }
+
+  #priority-divider h4{
+    font-size: 1rem;
+    font-weight: 300;
   }

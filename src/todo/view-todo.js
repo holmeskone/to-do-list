@@ -1,8 +1,12 @@
 export function displayTodo(todo){
-    const displayBlock = document.getElementById('todo-block');
+    const displayBlock = document.getElementById('priority-divider');
+    const lowPriorityBlock = document.getElementById('low-priority');
+    const mediumPriorityBlock = document.getElementById('medium-priority');
+    const highPriorityBlock = document.getElementById('high-priority');
     displayBlock.className = 'todo-block';
     const todoListProject = document.createElement('div');
     todoListProject.className = 'todo';
+    todoListProject.id = `${todo.name}-${todo.todos.length - 1}`
     todoListProject.setAttribute('data-project',todo.name);
     const todoTitle = document.createElement('p');
     const todoDate = document.createElement('p');
@@ -15,7 +19,16 @@ export function displayTodo(todo){
     todoPriority.textContent = todo.todos[[todo.todos.length]-1].priority;
     todoNotes.textContent = todo.todos[[todo.todos.length]-1].notes;
     todoListProject.append(todoTitle, todoDate, todoDescription, todoPriority, todoNotes);
-    displayBlock.append(todoListProject);
+    let priorityBlock;
+    if (todoPriority.textContent === 'high'){
+        priorityBlock = highPriorityBlock.append(todoListProject);
+    }
+    else if (todoPriority.textContent === 'medium'){
+         priorityBlock =  mediumPriorityBlock.append(todoListProject);
+    }
+    else if (todoPriority.textContent === 'low'){
+         priorityBlock = lowPriorityBlock.append(todoListProject);
+    }
 }
 
 export function displayTab(section) {

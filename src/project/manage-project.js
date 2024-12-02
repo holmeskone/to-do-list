@@ -4,6 +4,7 @@ import { createDefaultProject } from "./create-project";
 import { selectProject } from "./select-project";
 
 export function delegateProjectOperations(section){
+    console.log('This is a section',section.parentElement.firstChild.innerHTML);
     const createProjectButton = document.getElementById('create-project-button'); // variable for the add project button
     const deleteProjectButtonClass = 'delete-project' // variable for the delete project button ❌
     const projectClass = 'project'; // variable for the project, specifically when we select it

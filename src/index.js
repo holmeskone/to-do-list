@@ -8,6 +8,9 @@ import { displayTab } from "./todo/view-todo";
 document.addEventListener('DOMContentLoaded', () => {
     console.log('App initialized');
     defaultProjectOperation();
+    // document.getElementById(displaySectionID).style.display = "block"
+    // displaySection.className += " active"; Make this based on the form section
+    
 });
 
 // Call when there's a click on the project section

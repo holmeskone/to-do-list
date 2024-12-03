@@ -1,62 +1,118 @@
 body{
-    display: grid;
-    margin: 0px;
+display: grid;
+margin: 0px;
+font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Layout for Content section */
 
 #content{
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+display: grid;
+grid-template-columns: 1fr 3fr;
 }
 
 
-/* PROJECT SECTION */
+/* PROJECT SECTION MENU*/
 
 #project-section{
-    background-color: #283618;
-    color: #fefae0;
+background-color: #1B4965;
+padding: 1rem;
 }
+
+#project-section h2{
+  color: beige;
+}
+  
+
+#project-section form {
+display: grid;
+gap: 0.5rem;
+}
+#project-section #input-project-name {
+height: 2.5rem;
+border: 0px;
+border-radius: 5px;
+color: gray;
+padding: 1rem;
+text-transform: capitalize;
+}
+#project-section #create-project-button {
+background-color: #62B6CB;
+color: #ffffff;
+height: 2.5rem;
+border: none;
+border-radius: 5px;
+text-transform: capitalize;
+font-size: 1rem;
+}
+
+
+
+
+
 
 /* Styling selecting project */
 
-#project-section [class*=" selected"]{
-  background-color: #bc6c25;
+
+
+#created-projects div{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  border-radius: 5px;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 1rem;
+  margin: 1rem 0rem;
 }
 
-/* Styling for Todo Section */
+#project-section button{
+  height: 1rem;
+  justify-self: center;
+  align-self: center;
+  background-color: transparent;
+  border: none;
+}
+
+#project-section [class*=" selected"]{
+background-color: white;
+color: #1B4965;
+}
+
+/* Styling for Todo Section - Main section*/
 
 #todo-section{
-    background-color: #fefae0;
-    color: #283618;
+padding-top: 1rem;
+background-color: #F0F7F4;
+color: #283618;
 }
 
-/* Style the tab */
+/* Style the tab to select Create Todo or View Todos*/
 #todo-tab {
     display: flex;
     overflow: hidden;
-    border-radius: 5px;
     margin: 1rem;
-    background-color: #dda15e;
     padding: 0.5rem;
     justify-content: space-evenly;
+    gap: 3rem;
   }
   
   /* Style the buttons that are used to open the tab content */
   #todo-tab button {
-    background-color: #bc6c25;
-    border: none;
+    background-color: #1B4965;
+    border: 1px solid #fff;
+    border-radius: 5px;
     outline: none;
     cursor: pointer;
     padding: 1rem;
     transition: 0.3s;
     width: -webkit-fill-available;
     color: #fefae0;
+    font-size: 1rem;
   }
   
   /* Change background color of buttons on hover */
   #todo-tab button:hover {
-    background-color: #bc7b41;
+    background-color: #1B4965;
   }
   
   /* Create an active/current tablink class */
@@ -66,13 +122,92 @@ body{
   
 
 
-  /* Style the tab content */
+  /* Style the tab content section */
   .tab-content {
     display: none;
     padding: 6px 12px;
+    height: 48vh;
   }
 
-  /* TODO LIST */
+
+  /* TODO FORM SECTION*/
+  #create-todo-section{
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid;
+    margin: 1rem;
+    gap: 2rem;
+  }
+  #todo-form-title-date{
+    margin: 1vh 0vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  #title{
+    width: -webkit-fill-available ;
+    height: 2rem;
+    border: 1px solid #CAE9FF
+  }
+  #date{
+    width: -webkit-fill-available;
+    height: 2rem;
+    border: 1px solid #CAE9FF
+  }
+  #todo-description {
+    display: grid;
+    width: -webkit-fill-available;
+    margin: 1vh 0vh;
+  }
+  #description {
+    resize: vertical;
+    overflow: scroll;
+    border: 1px solid #CAE9FF
+  }
+
+  textarea{
+    height: 6rem;
+    border: 1px solid #CAE9FF
+  }
+  textarea::placeholder{
+    font-size: .8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 6rem;
+    
+  }
+  #todo-priority{
+    display: grid;
+    width: -webkit-fill-available;
+    margin: 1vh 0vh;
+  }
+  #todo-priority select{
+    height: 2rem;
+    border: 1px solid #CAE9FF
+  }
+  #todo-notes{
+    display: grid;
+    width: -webkit-fill-available;
+    margin: 1vh 0vh;
+  }
+
+
+  #create-todo-button{
+    width:-webkit-fill-available;
+    font-size: 1rem;
+    background-color: #1B4965;
+    border-radius: 2px;
+    border: 0px;
+    height: 2.5rem;
+    margin: 1vh 0vh;
+    color: white;
+  }
+
+  #create-todo-button:hover{
+    background-color: #bc6c25;
+    color: beige;
+  }
+
+  /* TODO LIST SECTION*/
 
   #todo-block h3{
     text-align: center;

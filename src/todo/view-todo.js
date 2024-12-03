@@ -45,16 +45,24 @@ export function displayTab(section) {
         tabContent[i].className = tabContent[i].className.replace(" active", "");
   }
 
-    // // Get all elements with class="tab-button" and remove the class "active"
-    // tabButton = document.getElementsByClassName("todo-button");
-    // for (i = 0; i < tabButton.length; i++) {
-    //     tabButton[i].className = tabButton[i].className.replace(" active", "");
-    // }
-    
+  tabButton = document.getElementsByClassName("todo-button");
+  for (i = 0; i < tabContent.length; i++) {
+    tabButton[i].style.backgroundColor = "#1B4965";
+    tabButton[i].style.color = "#fff";
+    tabButton[i].className = tabButton[i].className.replace(" active", "");
+}
 
     // if (section = createTodoSectionButton.id){
     // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(displaySectionID).style.display = "block";
     displaySection.className += " active";
+
+    //Have display show highlighted button when corresponding todo section is displayed
+    document.getElementById(section).style.backgroundColor = 'White';
+    document.getElementById(section).style.border = '1px solid #1B4965';
+    document.getElementById(section).style.color = '#1B4965';
+    document.getElementById(section).className += " active";
+
+
 
 }

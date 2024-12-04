@@ -12,7 +12,7 @@ export function displayTodo(todo){
     todoTitle.className = 'todo-item-title';
     const todoCompleted = document.createElement('input');
     todoCompleted.type = 'checkbox';
-    todoCompleted.id = `${todo.name}-${todo.priority}-checkbox`;
+    todoCompleted.id = `${todo.name}-${[todo.todos.length]-1}-checkbox`;
     const todoHeader = document.createElement('div')
     todoHeader.className = 'todo-item-header';
     todoHeader.append(todoTitle,todoCompleted)
@@ -38,6 +38,7 @@ export function displayTodo(todo){
     const deleteTodo = document.createElement('button');
     deleteTodo.textContent = 'Delete';
     deleteTodo.className = 'todo-item-delete';
+    deleteTodo.id = `${todo.name}-${[todo.todos.length]-1}-delete`;
     todoListProject.append(todoHeader, todoDate, todoDescription, todoNotesSection,deleteTodo);
     let priorityBlock;
     if (todoPriority.textContent === 'high'){
@@ -82,7 +83,5 @@ export function displayTab(section) {
     document.getElementById(section).style.border = '1px solid #1B4965';
     document.getElementById(section).style.color = '#1B4965';
     document.getElementById(section).className += " active";
-
-
 
 }

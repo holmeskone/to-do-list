@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
 });
 
+//Clear out Project Section input when clicking on it
+const projectInput = document.getElementById('input-project-name')
+projectInput.addEventListener('click', () => {
+    projectInput.value='';});
+    
 // Call when there's a click on the project section
 const projectSection = document.getElementById('project-section')
 projectSection.addEventListener('click', (e) => {
@@ -23,6 +28,11 @@ projectSection.addEventListener('click', (e) => {
 const toDoSection = document.getElementById('create-todo-button');
 toDoSection.addEventListener('click', () => {
     managetodo();
+    let buttonText = 'Added!';
+    toDoSection.value = buttonText;
+    // // originalButtonText = buttonText;
+    setTimeout(function(){
+        toDoSection.value = 'Add To Do';}, 3000);
 });
 
 //Call when tabs are clicked

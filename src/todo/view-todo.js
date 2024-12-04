@@ -9,16 +9,36 @@ export function displayTodo(todo){
     todoListProject.id = `${todo.name}-${todo.todos.length - 1}`
     todoListProject.setAttribute('data-project',todo.name);
     const todoTitle = document.createElement('p');
+    todoTitle.className = 'todo-item-title';
+    const todoCompleted = document.createElement('input');
+    todoCompleted.type = 'checkbox';
+    todoCompleted.id = `${todo.name}-${todo.priority}-checkbox`;
+    const todoHeader = document.createElement('div')
+    todoHeader.className = 'todo-item-header';
+    todoHeader.append(todoTitle,todoCompleted)
     const todoDate = document.createElement('p');
+    todoDate.className = 'todo-item-date';
     const todoDescription = document.createElement('p');
+    todoDescription.className = 'todo-item-description';
     const todoPriority = document.createElement('p');
-    const todoNotes = document.createElement('p');
+    todoPriority.className =  'todo-item-priority'
+    const todoNotesSection = document.createElement('div');
+    todoNotesSection.className = 'todo-section-notes'
+    const todoNotesComment = document.createElement('p');
+    todoNotesComment.className = 'todo-notes-title'
+    const todoNotes = document.createElement('div');
+    todoNotesComment.textContent = 'Notes:'
+    todoNotesSection.append(todoNotesComment,todoNotes);
+    todoNotes.className = 'todo-item-notes';
     todoTitle.textContent = todo.todos[[todo.todos.length]-1].title;
     todoDate.textContent = `Due date: ${todo.todos[[todo.todos.length]-1].date}`;
     todoDescription.textContent = todo.todos[[todo.todos.length]-1].description;
     todoPriority.textContent = todo.todos[[todo.todos.length]-1].priority;
     todoNotes.textContent = todo.todos[[todo.todos.length]-1].notes;
-    todoListProject.append(todoTitle, todoDate, todoDescription, todoPriority, todoNotes);
+    const deleteTodo = document.createElement('button');
+    deleteTodo.textContent = 'Delete';
+    deleteTodo.className = 'todo-item-delete';
+    todoListProject.append(todoHeader, todoDate, todoDescription, todoNotesSection,deleteTodo);
     let priorityBlock;
     if (todoPriority.textContent === 'high'){
         priorityBlock = highPriorityBlock.append(todoListProject);

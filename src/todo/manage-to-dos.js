@@ -2,63 +2,74 @@ import { createToDo } from "./create-todo";
 import { selectProjectName } from "../project/select-project";
 
 
-export function manageToDo() {
+export function manageToDo(id) {
     const addToDo = document.getElementById('create-todo-button');
+ 
+    if (id === addToDo.id){
+        // Fetch input values
+        console.log('there was a click')
+        let titleToDo = document.getElementById('title').value.trim();
+        let dateToDo = document.getElementById('date').value.trim();
+        let descriptionToDo = document.getElementById('description').value.trim();
+        let priorityToDo = document.getElementById('priorities').value.trim();
+        let notesToDo = document.getElementById('notes').value.trim();
+        let projectToDo = selectProjectName; // Ensure this is defined elsewhere
 
-    if (addToDo) {
-        addToDo.addEventListener('click', () => {
-            // Fetch input values
-            const titleToDo = document.getElementById('title').value.trim();
-            const dateToDo = document.getElementById('date').value.trim();
-            const descriptionToDo = document.getElementById('description').value.trim();
-            const priorityToDo = document.getElementById('priorities').value.trim();
-            const notesToDo = document.getElementById('notes').value.trim();
-            const projectToDo = selectProjectName; // Ensure this is defined elsewhere
+        // Get or create error message element
+        let errorMessage = document.getElementById('error');
+        if (!errorMessage) {
+            const errorSection = document.getElementById('error-section');
+            errorMessage = document.createElement('p');
+            errorMessage.id = 'error';
+            errorSection.appendChild(errorMessage);
+        }
 
-            // Get or create error message element
-            let errorMessage = document.getElementById('error');
-            if (!errorMessage) {
-                const errorSection = document.getElementById('error-section');
-                errorMessage = document.createElement('p');
-                errorMessage.id = 'error';
-                errorSection.appendChild(errorMessage);
-            }
+        // Validation
+        if (!titleToDo || !priorityToDo) {
+            errorMessage.textContent = 'Please complete the title and priority fields.';
+            errorMessage.style.color = 'red';
+            errorMessage.style.display = 'block'; // Make sure it's visible
+            return; // Stop here if validation fails
+        }
 
-            // Validation
-            if (!titleToDo || !priorityToDo) {
-                errorMessage.textContent = 'Please complete the title and priority fields.';
-                errorMessage.style.color = 'red';
-                errorMessage.style.display = 'block'; // Make sure it's visible
-                return; // Stop here if validation fails
-            }
+        // Clear error message (if previously displayed)
+        errorMessage.textContent = '';
+        errorMessage.style.display = 'none'; // Hide the error message
 
-            // Clear error message (if previously displayed)
-            errorMessage.textContent = '';
-            errorMessage.style.display = 'none'; // Hide the error message
+        // Change button text to indicate action
+        const originalButtonText = addToDo.textContent || addToDo.value;
+        const buttonText = 'Added!';
+        
+        if (addToDo.tagName === 'BUTTON') {
+            addToDo.textContent = buttonText;
+        } else {
+            addToDo.value = buttonText;
+        }
 
-            // Change button text to indicate action
-            const originalButtonText = addToDo.textContent || addToDo.value;
-            const buttonText = 'Added!';
-            
+        // Reset button text after 3 seconds
+        setTimeout(() => {
             if (addToDo.tagName === 'BUTTON') {
-                addToDo.textContent = buttonText;
+                addToDo.textContent = originalButtonText;
             } else {
-                addToDo.value = buttonText;
+                addToDo.value = originalButtonText;
             }
+        }, 3000);
 
-            // Reset button text after 3 seconds
-            setTimeout(() => {
-                if (addToDo.tagName === 'BUTTON') {
-                    addToDo.textContent = originalButtonText;
-                } else {
-                    addToDo.value = originalButtonText;
-                }
-            }, 3000);
+        // Call createToDo function with valid data
+        createToDo(titleToDo, dateToDo, descriptionToDo, priorityToDo, notesToDo, projectToDo);
 
-            // Call createToDo function with valid data
-            createToDo(titleToDo, dateToDo, descriptionToDo, priorityToDo, notesToDo, projectToDo);
-        });
-    }
+        //Clear all input fields:
+        const titleInput = document.getElementById('title');
+        const dateInput = document.getElementById('date');
+        const descriptionInput = document.getElementById('description');
+        const prioritiesInput = document.getElementById('priorities');
+        const notesInput = document.getElementById('notes');
+        titleInput.value = '';
+        dateInput.value = '';
+        descriptionInput.value = '';
+        prioritiesInput.value = '';
+        notesInput.value = '';
+    };
 }
 
 export function completedToDo(id) {

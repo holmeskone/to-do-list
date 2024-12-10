@@ -9,8 +9,10 @@ import { completedToDo } from "./todo/manage-to-dos";
 document.addEventListener('DOMContentLoaded', () => {
     console.log('App initialized');
     defaultProjectOperation();
-    // document.getElementById(displaySectionID).style.display = "block"
-    // displaySection.className += " active"; Make this based on the form section
+    displayTab('create-todo-section-button');
+    // const displayTodoSection = document.getElementById('create-todo-section-button');
+    // document.getElementById(displayTodoSection).style.display = "block";
+    // displayTodoSection.className += " active"; 
     
 });
 
@@ -27,8 +29,9 @@ projectSection.addEventListener('click', (e) => {
 
 // Call when there's a click on the to do section
 const toDoSection = document.getElementById('create-todo-button');
-toDoSection.addEventListener('click', () => {
-    manageToDo();
+toDoSection.addEventListener('click', (e) => {
+    manageToDo(e.target.id);
+
 });
 
 //Call when tabs are clicked

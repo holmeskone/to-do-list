@@ -163,6 +163,7 @@ color: #283618;
     border: 1px solid #CAE9FF;
     border-radius: 5px;
     padding-left: 0.75rem;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   #date::placeholder{
@@ -269,6 +270,10 @@ color: #283618;
     font-weight: 600;
   }
 
+  .priority-section {
+    display: grid;
+    justify-items: center ;
+  }
 
   /* Styling To Do that is displayed in the priority columns */
 

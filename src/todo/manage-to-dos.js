@@ -1,5 +1,6 @@
 import { createToDo } from "./create-todo";
 import { selectProjectName } from "../project/select-project";
+import { allProjects, createDefaultProject } from "../project/create-project";
 
 
 export function manageToDo(id) {
@@ -14,6 +15,7 @@ export function manageToDo(id) {
         let priorityToDo = document.getElementById('priorities').value.trim();
         let notesToDo = document.getElementById('notes').value.trim();
         let projectToDo = selectProjectName; // Ensure this is defined elsewhere
+        let statusToDo = 'pending';
 
         // Get or create error message element
         let errorMessage = document.getElementById('error');
@@ -56,7 +58,7 @@ export function manageToDo(id) {
         }, 3000);
 
         // Call createToDo function with valid data
-        createToDo(titleToDo, dateToDo, descriptionToDo, priorityToDo, notesToDo, projectToDo);
+        createToDo(titleToDo, dateToDo, descriptionToDo, priorityToDo, notesToDo, projectToDo,statusToDo);
 
         //Clear all input fields:
         const titleInput = document.getElementById('title');
@@ -75,24 +77,33 @@ export function manageToDo(id) {
 export function completedToDo(id) {
     // Log the clicked ID for debugging
     console.log(id);
-
+    const project = allProjects.get(id.split('-')[0]) // Get the todo ID first string that's associated with the project
+    const targetTextId = id.replace('-checkbox', ''); // Derive associated text ID
+    const targetDeleteTextId = id.replace('-delete', ''); // Derive associated text ID
+    const targetTextElement = document.getElementById(targetTextId); // The whole div of the todo task
+    const todoCheckedTitle = document.getElementById(targetDeleteTextId).firstChild; // Get the todo number in the Map() project
+    const todoChecked = id.split('-')[1]; // Get the todo index in the Map() project
     // Ensure an element exists for the provided ID
     const completedToDo = document.getElementById(id);
     if (!completedToDo) {
         console.warn(`Element with ID "${id}" not found.`);
         return;
     }
-
     // Determine if the action is a checkbox or delete
     if (id.includes('-checkbox')) {
-        const targetTextId = id.replace('-checkbox', ''); // Derive associated text ID
-        const targetTextElement = document.getElementById(targetTextId);
+        console.log(targetTextElement)
         if (targetTextElement) {
             // Toggle line-through based on current textDecoration value
             if (targetTextElement.style.textDecoration === 'line-through') {
                 targetTextElement.style.textDecoration = 'none'; // Remove line-through
+                project.todos[todoChecked].status = 'Pending';
+                console.log(project.todos)
+                console.log(project)
             } else {
                 targetTextElement.style.textDecoration = 'line-through'; // Add line-through
+                console.log(project.todos)
+                project.todos[todoChecked].status = 'Completed';
+                console.log(project)
             }
         } else {
             console.warn(`Text element with ID "${targetTextId}" not found.`);
@@ -100,8 +111,17 @@ export function completedToDo(id) {
     } else if (id.includes('-delete')) {
         // Delete the parent element if the delete button is clicked
         const parentElement = completedToDo.parentElement;
+        const deleteToDoTitle = todoCheckedTitle.textContent
         if (parentElement) {
+            console.log(deleteToDoTitle)
+            const todoIndex = project.todos.findIndex(todo => todo.title === deleteToDoTitle);
+            console.log("todoIndex:", todoIndex);
+            if (todoIndex !== -1) {
+                project.todos.splice(todoIndex, 1);
+            }
+            console.log(project);
             parentElement.remove();
+
         } else {
             console.warn(`Parent element for "${id}" not found.`);
         }

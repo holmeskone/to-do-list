@@ -64,14 +64,14 @@ export function displayTab(section) {
     for (i = 0; i < tabContent.length; i++) {
         tabContent[i].style.display = "none";
         tabContent[i].className = tabContent[i].className.replace(" active", "");
-  }
+    }
 
   tabButton = document.getElementsByClassName("todo-button");
   for (i = 0; i < tabContent.length; i++) {
     tabButton[i].style.backgroundColor = "#1B4965";
     tabButton[i].style.color = "#fff";
     tabButton[i].className = tabButton[i].className.replace(" active", "");
-}
+    }
 
     // if (section = createTodoSectionButton.id){
     // Show the current tab, and add an "active" class to the button that opened the tab

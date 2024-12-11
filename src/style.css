@@ -38,6 +38,10 @@ padding: 1rem;
 text-transform: capitalize;
 }
 
+#project-section #input-project-name:focus{
+color: black;
+}
+
 #project-section #create-project-button {
 background-color: #62B6CB;
 color: #ffffff;

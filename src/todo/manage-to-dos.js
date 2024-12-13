@@ -5,10 +5,8 @@ import { allProjects, createDefaultProject } from "../project/create-project";
 
 export function manageToDo(id) {
     const addToDo = document.getElementById('create-todo-button');
- 
     if (id === addToDo.id){
         // Fetch input values
-        console.log('there was a click')
         let titleToDo = document.getElementById('title').value.trim();
         let dateToDo = document.getElementById('date').value.trim();
         let descriptionToDo = document.getElementById('description').value.trim();
@@ -130,5 +128,23 @@ export function completedToDo(id) {
     }
 }
 
+
+// export function retrieveStorage(){
+//     // Loop through all keys in localStorage
+//     for (let i = 0; i < localStorage.length; i++) {
+//     // Get the key at the current index
+//     const key = localStorage.key(i);
+  
+//     // Retrieve the value associated with the key
+//     const dataString = localStorage.getItem(key);
+  
+//     // Parse the JSON string into a JavaScript object
+//     const data = JSON.parse(dataString);
+//     console.log(`data is:`, data)
+//     // Log the key and its data to the console
+//     console.log(`Key: ${key}, Data:`, data);
+
+//   }
+// }
 
 // project should be the SELECTED project.

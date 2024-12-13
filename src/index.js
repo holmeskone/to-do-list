@@ -10,10 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('App initialized');
     defaultProjectOperation();
     displayTab('create-todo-section-button');
-    // const displayTodoSection = document.getElementById('create-todo-section-button');
-    // document.getElementById(displayTodoSection).style.display = "block";
-    // displayTodoSection.className += " active"; 
-    
 });
 
 //Clear out Project Section input when clicking on it
@@ -25,6 +21,7 @@ projectInput.addEventListener('click', () => {
 const projectSection = document.getElementById('project-section')
 projectSection.addEventListener('click', (e) => {
  delegateProjectOperations(e.target); // Delegate to either create or delete project
+ console.log(`this is e.target`,e.target);
 });
 
 // Call when there's a click on the to do section
@@ -45,3 +42,4 @@ const prioritySection = document.getElementById('priority-divider');
 prioritySection.addEventListener('click', (e) => {
     completedToDo(e.target.id);
 })
+

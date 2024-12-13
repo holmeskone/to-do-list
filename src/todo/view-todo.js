@@ -10,6 +10,7 @@ export function displayTodo(todo){
     todoListProject.setAttribute('data-project',todo.name);
     const todoTitle = document.createElement('p');
     todoTitle.className = 'todo-item-title';
+    todoTitle.id = `${todo.name}-${[todo.todos.length]-1}-title`
     const todoCompleted = document.createElement('input');
     todoCompleted.type = 'checkbox';
     todoCompleted.id = `${todo.name}-${[todo.todos.length]-1}-checkbox`;
@@ -50,7 +51,10 @@ export function displayTodo(todo){
     else if (todoPriority.textContent === 'low'){
          priorityBlock = lowPriorityBlock.append(todoListProject);
     }
+
 }
+
+
 
 export function displayTab(section) {
     // Declare all variables

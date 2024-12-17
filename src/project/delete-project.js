@@ -22,7 +22,9 @@ export function deleteProject(id) {
         toDos[i].remove();
     }
 
+    //Remove the project [key] from LocalStorage
+    localStorage.removeItem(id.firstChild.id);
     // Remove the project itself
     id.remove();
-    console.log("Project deleted:", id);
+    console.log("Project deleted:", id.firstChild.id);
 }

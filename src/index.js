@@ -4,12 +4,14 @@ import { manageToDo } from "./todo/manage-to-dos";
 import { defaultProjectOperation } from "./project/manage-project";
 import { displayTab } from "./todo/view-todo";
 import { completedToDo } from "./todo/manage-to-dos";
+import { defaultToDoDisplay } from "./todo/view-todo";
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
     console.log('App initialized');
     defaultProjectOperation();
     displayTab('create-todo-section-button');
+    defaultToDoDisplay();
 });
 
 //Clear out Project Section input when clicking on it

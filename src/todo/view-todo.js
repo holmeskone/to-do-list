@@ -1,3 +1,5 @@
+import { selectProjectName } from "../project/select-project"; // importing the inner text of the selected project to then only display todos of that specific project
+
 export function displayTodo(todo){
     console.log(todo)
     for (let i=0; i<todo.todos.length; i++){
@@ -9,6 +11,7 @@ export function displayTodo(todo){
     displayBlock.className = 'todo-block';
     const todoListProject = document.createElement('div');
     todoListProject.className = 'todo';
+    // if it's projected has selected then thhis style is block else todoListProject.style.display = 'none';
     todoListProject.id = `${todo.name}-${i}`
     todoListProject.setAttribute('data-project',todo.name);
     const todoTitle = document.createElement('p');
@@ -91,4 +94,39 @@ export function displayTab(section) {
     document.getElementById(section).style.color = '#1B4965';
     document.getElementById(section).className += " active";
 
+    //for the project selected call displaytoDo
+    // Get all elements with class="todo" and hide them, then show the specific todos of a selected project
+    // const elements = document.querySelectorAll('[class*=" selected"]');
+    // console.log(elements);
+    let todos = document.querySelectorAll(".todo");
+    let selectedProject = document.getElementsByClassName(' selected');
+    let selectedProjectTitle = selectedProject[0].firstChild.textContent;
+    todos.forEach(todo => {
+        console.log(todo);
+        if (todo.hasAttribute('data-project') && todo.getAttribute('data-project') != selectedProjectTitle) {
+          todo.style.display = "none";
+          }
+        else if (todo.hasAttribute('data-project') && todo.getAttribute('data-project') === selectedProjectTitle) {
+          todo.style.display = "block";
+          }
+        });
+
+
+}
+
+export function defaultToDoDisplay(){
+    for (let i = 0; i < localStorage.length; i++) {
+        // Get the key at the current index
+        const key = localStorage.key(i);
+        // Retrieve the value associated with the key
+        const dataString = localStorage.getItem(key);
+        
+        // Parse the JSON string into a JavaScript object
+        const data = JSON.parse(dataString);
+        console.log(`data is:`, data)
+        // // Log the key and its data to the console
+        // console.log(`Key: ${key}, Data:`, data);
+        displayTodo(data);
+        // console.log(`todo length`, data.todos.length)
+    }
 }

@@ -1,4 +1,7 @@
 export function displayTodo(todo){
+    console.log(todo)
+    for (let i=0; i<todo.todos.length; i++){
+    console.log(todo.todos[i].title);
     const displayBlock = document.getElementById('priority-divider');
     const lowPriorityBlock = document.getElementById('low-priority');
     const mediumPriorityBlock = document.getElementById('medium-priority');
@@ -6,14 +9,14 @@ export function displayTodo(todo){
     displayBlock.className = 'todo-block';
     const todoListProject = document.createElement('div');
     todoListProject.className = 'todo';
-    todoListProject.id = `${todo.name}-${todo.todos.length - 1}`
+    todoListProject.id = `${todo.name}-${i}`
     todoListProject.setAttribute('data-project',todo.name);
     const todoTitle = document.createElement('p');
     todoTitle.className = 'todo-item-title';
-    todoTitle.id = `${todo.name}-${[todo.todos.length]-1}-title`
+    todoTitle.id = `${todo.name}-${i}-title`
     const todoCompleted = document.createElement('input');
     todoCompleted.type = 'checkbox';
-    todoCompleted.id = `${todo.name}-${[todo.todos.length]-1}-checkbox`;
+    todoCompleted.id = `${todo.name}-${i}-checkbox`;
     const todoHeader = document.createElement('div')
     todoHeader.className = 'todo-item-header';
     todoHeader.append(todoTitle,todoCompleted)
@@ -31,27 +34,27 @@ export function displayTodo(todo){
     todoNotesComment.textContent = 'Notes:'
     todoNotesSection.append(todoNotesComment,todoNotes);
     todoNotes.className = 'todo-item-notes';
-    todoTitle.textContent = todo.todos[[todo.todos.length]-1].title;
-    todoDate.textContent = `Due date: ${todo.todos[[todo.todos.length]-1].date}`;
-    todoDescription.textContent = todo.todos[[todo.todos.length]-1].description;
-    todoPriority.textContent = todo.todos[[todo.todos.length]-1].priority;
-    todoNotes.textContent = todo.todos[[todo.todos.length]-1].notes;
+    todoTitle.textContent = todo.todos[i].title;
+    todoDate.textContent = `Due date: ${todo.todos[i].date}`;
+    todoDescription.textContent = todo.todos[i].description;
+    todoPriority.textContent = todo.todos[i].priority;
+    todoNotes.textContent = todo.todos[i].notes;
     const deleteTodo = document.createElement('button');
     deleteTodo.textContent = 'Delete';
     deleteTodo.className = 'todo-item-delete';
-    deleteTodo.id = `${todo.name}-${[todo.todos.length]-1}-delete`;
+    deleteTodo.id = `${todo.name}-${i}-delete`;
     todoListProject.append(todoHeader, todoDate, todoDescription, todoNotesSection,deleteTodo);
     let priorityBlock;
-    if (todoPriority.textContent === 'high'){
-        priorityBlock = highPriorityBlock.append(todoListProject);
+        if (todoPriority.textContent === 'high'){
+            priorityBlock = highPriorityBlock.append(todoListProject);
+        }
+        else if (todoPriority.textContent === 'medium'){
+            priorityBlock =  mediumPriorityBlock.append(todoListProject);
+        }
+        else if (todoPriority.textContent === 'low'){
+            priorityBlock = lowPriorityBlock.append(todoListProject);
+        }
     }
-    else if (todoPriority.textContent === 'medium'){
-         priorityBlock =  mediumPriorityBlock.append(todoListProject);
-    }
-    else if (todoPriority.textContent === 'low'){
-         priorityBlock = lowPriorityBlock.append(todoListProject);
-    }
-
 }
 
 

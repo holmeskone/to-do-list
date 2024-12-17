@@ -37,30 +37,12 @@ export function createProject(){
 
 
 export function createDefaultProject(){
-    // const projectBar = document.getElementById('created-projects');
-    // const projectSection = document.createElement('div');
-    // const projectNameDisplay = document.createElement('h3');
-    // const deleteProject = document.createElement('button');
     const projectName = 'Default Project'
-    // Create a new project
     const newProject = new Project(projectName);
     allProjects.set(projectName, newProject);
     console.log('All projects: ', allProjects);
-    // projectNameDisplay.id = `${projectName}`
-    // projectNameDisplay.className = `${projectName}-title`
-    // deleteProject.id = `${projectName}-delete`;
-    // deleteProject.className = 'delete-project';
-    // deleteProject.textContent = '❌';
-    // projectSection.id = `${projectName}-section`;
-    // projectSection.className = 'project';
-    // projectNameDisplay.innerHTML = projectName;
     console.log('New project created:', newProject);
-    // projectSection.append(projectNameDisplay,deleteProject);
-    // projectBar.appendChild(projectSection);
-    // selectProject(projectSection.firstElementChild,projectSection.id); //Make default project as selected one.
-    // console.log(allProjects.get("Default Project"))
     localStorage.setItem('Default Project' , JSON.stringify(allProjects.get(`${projectName}`))) // This sets the project name as the key in the localStorage, as value it includes the Map().
-    // console.log(localStorage.getItem(`${projectName}`));
     displayProject(projectName);
 }
 

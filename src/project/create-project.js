@@ -13,8 +13,8 @@ export function createProject(){
     const input = document.getElementById('input-project-name');
     const projectName = input.value;
     const newProject = new Project(projectName);
+    //Setting allProjects
     allProjects.set(projectName, newProject);
-    console.log('All projects: ', allProjects);
     // Create a new project
     // currentProject = new Project(projectName);
     projectNameDisplay.id = `${projectName}`

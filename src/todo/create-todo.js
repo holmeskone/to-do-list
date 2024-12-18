@@ -3,6 +3,7 @@ import { Project } from "../project/class-project";
 import { displayTodo } from "./view-todo";
 import { selectProject, selectProjectName } from "../project/select-project";
 import { allProjects } from "../project/create-project";
+import { defaultToDoDisplay } from "./view-todo";
 
 
 
@@ -15,7 +16,8 @@ export function createToDo(title, date, description, priority, notes, project,st
     projectObj.todos.push(newTodo);
     localStorage.setItem(selectProjectName, JSON.stringify(projectObj));
     console.log("Todo added successfully!", projectObj);
-    displayTodo(projectObj);
+    defaultToDoDisplay();
+    // displayTodo(projectObj);
     // const addedProject = JSON.parse(getProject)
     // console.log(addedProject)
     // getProject.concat(addedProject); // currentProject is the class of Object Project, here we get it's property to do's and push our recently made todo instance into it the project. 

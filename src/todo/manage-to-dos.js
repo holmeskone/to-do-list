@@ -1,7 +1,7 @@
 import { createToDo } from "./create-todo";
 import { selectProjectName } from "../project/select-project";
 import { allProjects, createDefaultProject } from "../project/create-project";
-
+import { deleteToDo } from "./delete-todo";
 
 export function manageToDo(id) {
     const addToDo = document.getElementById('create-todo-button');
@@ -106,45 +106,8 @@ export function completedToDo(id) {
         } else {
             console.warn(`Text element with ID "${targetTextId}" not found.`);
         }
-    } else if (id.includes('-delete')) {
-        // Delete the parent element if the delete button is clicked
-        const parentElement = completedToDo.parentElement;
-        const deleteToDoTitle = todoCheckedTitle.textContent
-        if (parentElement) {
-            console.log(deleteToDoTitle)
-            const todoIndex = project.todos.findIndex(todo => todo.title === deleteToDoTitle);
-            console.log("todoIndex:", todoIndex);
-            if (todoIndex !== -1) {
-                project.todos.splice(todoIndex, 1);
+    } 
+        else if (id.includes('-delete')) {
+            deleteToDo(id)
             }
-            console.log(project);
-            parentElement.remove();
-
-        } else {
-            console.warn(`Parent element for "${id}" not found.`);
-        }
-    } else {
-        console.log(`No action taken for ID "${id}".`);
-    }
 }
-
-
-// export function retrieveStorage(){
-//     // Loop through all keys in localStorage
-//     for (let i = 0; i < localStorage.length; i++) {
-//     // Get the key at the current index
-//     const key = localStorage.key(i);
-  
-//     // Retrieve the value associated with the key
-//     const dataString = localStorage.getItem(key);
-  
-//     // Parse the JSON string into a JavaScript object
-//     const data = JSON.parse(dataString);
-//     console.log(`data is:`, data)
-//     // Log the key and its data to the console
-//     console.log(`Key: ${key}, Data:`, data);
-
-//   }
-// }
-
-// project should be the SELECTED project.

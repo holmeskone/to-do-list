@@ -75,11 +75,11 @@ export function manageToDo(id) {
 export function completedToDo(id) {
     // Log the clicked ID for debugging
     console.log(id);
-    const project = allProjects.get(id.split('-')[0]) // Get the todo ID first string that's associated with the project
-    const targetTextId = id.replace('-checkbox', ''); // Derive associated text ID
-    const targetDeleteTextId = id.replace('-delete', ''); // Derive associated text ID
+    const project = JSON.parse(localStorage.getItem(id.split('-')[0])) // Get the todo ID first string that's associated with the project
+    console.log(project)
+    const targetTextId = id.replace('checkbox', 'title'); // Derive associated text ID
+    const text = document.getElementById(targetTextId).textContent;
     const targetTextElement = document.getElementById(targetTextId); // The whole div of the todo task
-    const todoCheckedTitle = document.getElementById(targetDeleteTextId).firstChild; // Get the todo number in the Map() project
     const todoChecked = id.split('-')[1]; // Get the todo index in the Map() project
     // Ensure an element exists for the provided ID
     const completedToDo = document.getElementById(id);
@@ -89,25 +89,36 @@ export function completedToDo(id) {
     }
     // Determine if the action is a checkbox or delete
     if (id.includes('-checkbox')) {
-        console.log(targetTextElement)
         if (targetTextElement) {
-            // Toggle line-through based on current textDecoration value
-            if (targetTextElement.style.textDecoration === 'line-through') {
-                targetTextElement.style.textDecoration = 'none'; // Remove line-through
-                project.todos[todoChecked].status = 'Pending';
-                console.log(project.todos)
-                console.log(project)
+            if (project && project.todos) {
+                // Toggle the todo status
+                project.todos = project.todos.map(todo => {
+                    if (todo.title === text) {
+                        console.log("Found the todo to toggle:", todo);
+    
+                        // Toggle the status and text decoration
+                        if (todo.status === "pending") {
+                            console.log("Changing status to completed");
+                            targetTextElement.style.textDecoration = "line-through";
+                            return { ...todo, status: "completed" }; // Update to completed
+                        } else if (todo.status === "completed") {
+                            console.log("Changing status to pending");
+                            targetTextElement.style.textDecoration = "none";
+                            return { ...todo, status: "pending" }; // Update to pending
+                        }
+                    }
+                    return todo; // Return unchanged todos for non-matching cases
+                });
             } else {
-                targetTextElement.style.textDecoration = 'line-through'; // Add line-through
-                console.log(project.todos)
-                project.todos[todoChecked].status = 'Completed';
-                console.log(project)
+                console.warn("No todos found for this project.");
             }
+    
+            // Save the updated project back to localStorage
+            localStorage.setItem(id.split('-')[0], JSON.stringify(project));
         } else {
             console.warn(`Text element with ID "${targetTextId}" not found.`);
         }
-    } 
-        else if (id.includes('-delete')) {
-            deleteToDo(id)
-            }
+    } else if (id.includes('-delete')) {
+        deleteToDo(id);
+    }
 }

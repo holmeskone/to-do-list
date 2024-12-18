@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script defer src="main.js"></script></head>
+<body>
+    <div id="content"> <!-- Overall content section -->
+        <div id="project-section"> <!-- Content section for the projects to be displayed-->
+            <h2>Projects</h2>
+            <div id="add-project">
+                <form action="">
+                    <input type="text" id="input-project-name" name="project-name" value="New project"/> <!-- Insert project name -->
+                    <input type="button" id="create-project-button" name="create-project" value="add project" > <!-- Insert project name -->
+                </form>
+            </div>
+            <div id="created-projects"></div>
+        </div>
+        <div id="todo-section">
+            <div class="todo-banner" id="todo-tab">
+                <button class="todo-button" id="create-todo-section-button" data="create-todo-section">Create To Do</button>
+                <button class="todo-button" id="view-todo-section-button" data="view-todo-section">To Do List</button>
+            </div>              
+            <div class="tab-content" id="create-todo-section" >
+                <form action="" id="todo" class="todo-form">
+                    <h2>Create a To Do</h2>
+                    <div id="error"></div>
+                    <div id="todo-form-title-date">
+                        <div id="todo-title">
+                            <label for="title">Title*</label>
+                            <input type="text" name="title" id="title" required placeholder="Enter to do title"/>
+                        </div> 
+                        <div id="todo-date">
+                            <label for="date">Date</label>
+                            <input type="date" name="date" id="date"/>
+                        </div>
+                    </div>
+
+                    <div id="todo-description">
+                        <label for="description">Description</label>
+                        <textarea type="text" name="description" id="description" placeholder="Enter to do description"></textarea>
+                    </div>
+                    <div id="todo-priority">
+                        <label for="priority">Priority*</label>
+                        <select name="priorities" id="priorities" required>
+                            <option value="" selected disabled hidden>Select priority</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    <div id="todo-notes">
+                        <label for="notes">Notes (Optional)</label>
+                        <textarea type="text" name="notes" id="notes" placeholder="Enter additional notes"></textarea>
+                    </div>
+                    <div>
+                        <input type="button" name="create-todo-button" id="create-todo-button" value="Add To Do">
+                    </div>
+                </form>
+            </div>
+            <div class="tab-content" id="view-todo-section">
+                <div id="todo-block">
+                    <div id="priority-divider">
+                        <div id="low-priority" class="priority-section">
+                            <h4>Low Priority</h4>
+                        </div>
+                        <div id="medium-priority" class="priority-section">
+                            <h4>Medium Priority</h4>
+                        </div>
+                        <div id="high-priority" class="priority-section">
+                            <h4>High Priority</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

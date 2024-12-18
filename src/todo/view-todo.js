@@ -1,9 +1,7 @@
 import { selectProjectName } from "../project/select-project"; // importing the inner text of the selected project to then only display todos of that specific project
 
 export function displayTodo(todo){
-    console.log(todo)
     for (let i=0; i<todo.todos.length; i++){
-    console.log(todo.todos[i].title);
     const displayBlock = document.getElementById('priority-divider');
     const lowPriorityBlock = document.getElementById('low-priority');
     const mediumPriorityBlock = document.getElementById('medium-priority');
@@ -96,8 +94,6 @@ export function displayTab(section) {
 
     //for the project selected call displaytoDo
     // Get all elements with class="todo" and hide them, then show the specific todos of a selected project
-    // const elements = document.querySelectorAll('[class*=" selected"]');
-    // console.log(elements);
     let todos = document.querySelectorAll(".todo");
     let selectedProject = document.getElementsByClassName(' selected');
     let selectedProjectTitle = selectedProject[0].firstChild.textContent;
@@ -115,18 +111,24 @@ export function displayTab(section) {
 }
 
 export function defaultToDoDisplay(){
+    const highPrioritySection = document.getElementById("high-priority");
+    const mediumPrioritySection = document.getElementById("medium-priority");
+    const lowPrioritySection = document.getElementById("low-priority");
+    const highTodos = highPrioritySection.querySelectorAll(".todo");
+    const mediumTodos = mediumPrioritySection.querySelectorAll(".todo");
+    const lowTodos = lowPrioritySection.querySelectorAll(".todo");
+    highTodos.forEach(todo => todo.remove());
+    mediumTodos.forEach(todo => todo.remove());
+    lowTodos.forEach(todo => todo.remove());
     for (let i = 0; i < localStorage.length; i++) {
         // Get the key at the current index
         const key = localStorage.key(i);
         // Retrieve the value associated with the key
         const dataString = localStorage.getItem(key);
-        
         // Parse the JSON string into a JavaScript object
         const data = JSON.parse(dataString);
         console.log(`data is:`, data)
         // // Log the key and its data to the console
-        // console.log(`Key: ${key}, Data:`, data);
         displayTodo(data);
-        // console.log(`todo length`, data.todos.length)
     }
 }
